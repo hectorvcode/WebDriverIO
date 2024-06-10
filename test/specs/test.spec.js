@@ -7,6 +7,18 @@ describe("Test suite", () => {
 
     //console.log("Titulo de pagina", pageTitle);
 
-    expect(pageTitle).toEqual("Appointment Planner - Syncfusion Angular Components Showcase App")
+    expect(pageTitle).toEqual(
+      "Appointment Planner - Syncfusion Angular Components Showcase App"
+    );
+  });
+
+  it("Second test", async () => {
+    await $("div.doctors").click();
+    await $("//button[text()='Add New Doctor']").click();
+    await $("input[name='Name']").setValue("John Doe");
+    await $("//button[text()='Save']").click();
+    
+    const emailError = await $("label#Email-info");
+    expect(await emailError.getText()).toEqual("Enter valid email");
   });
 });
